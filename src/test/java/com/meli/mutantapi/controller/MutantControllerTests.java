@@ -51,7 +51,7 @@ public class MutantControllerTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(content().json("{\"isMutant\":true}", true));
+                .andExpect(content().json("{\"is_mutant_dna\":true}", true));
     }
 
     public static String asJsonString (final MutantRequestDto requestDto) {

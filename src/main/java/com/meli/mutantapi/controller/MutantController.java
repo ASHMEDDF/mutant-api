@@ -22,7 +22,7 @@ public class MutantController {
     public ResponseEntity<MutantResponseDto> mutant (@RequestBody MutantRequestDto mutantRequestDto) {
         Boolean mutant = mutantService.isMutant(mutantRequestDto.getDna());
         if (Boolean.TRUE.equals(mutant)){
-            return new ResponseEntity<>(new MutantResponseDto(mutant), HttpStatus.OK);
+            return new ResponseEntity<>(new MutantResponseDto(true), HttpStatus.OK);
         }
         return new ResponseEntity<>(new MutantResponseDto(mutant), HttpStatus.FORBIDDEN);
     }
