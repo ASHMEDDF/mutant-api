@@ -18,7 +18,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name="DNA")
+@Table(name="dna")
 public class Dna implements Serializable {
 
     @Id
