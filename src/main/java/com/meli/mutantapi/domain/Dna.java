@@ -22,7 +22,7 @@ import java.io.Serializable;
 public class Dna implements Serializable {
 
     @Id
-    @Column
+    @Column(name="dna")
     private String dna;
 
     @Column(name="is_mutant")
