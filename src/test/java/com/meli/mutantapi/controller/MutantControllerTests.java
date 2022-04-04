@@ -45,7 +45,7 @@ public class MutantControllerTests {
     @Test
     @JsonDeserialize
     public void shouldReturnMutantsMessage () throws Exception {
-        List<String> dna = List.of("XXXX", "AAAA", "XXXX", "XXXX");
+        List<String> dna = List.of("XXXX", "AAAA", "AAAA", "XXXX");
         this.mockMvc.perform(MockMvcRequestBuilders.post("/mutant")
                 .content(asJsonString(new MutantRequestDto(dna)))
                 .contentType(MediaType.APPLICATION_JSON)

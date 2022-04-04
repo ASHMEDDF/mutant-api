@@ -18,7 +18,7 @@ class DnaValidatorTests {
     }
 
     @Test
-    void dnaIsNotMutantInRow () {
+    void dnaIsNotMutant () {
         List<String> dna = List.of(
                 "XXXX",
                 "XXXX",
@@ -29,9 +29,20 @@ class DnaValidatorTests {
     }
 
     @Test
+    void dnaIsNotMutantSingleBase () {
+        List<String> dna = List.of(
+                "AAAA",
+                "XXXX",
+                "XXXX",
+                "XXXX");
+        Boolean actual = this.dnaValidator.validateDna(dna);
+        assertFalse(actual);
+    }
+
+    @Test
     void dnaIsMutantInRow () {
         List<String> dna = List.of(
-                "XXXX",
+                "AAAA",
                 "XXXX",
                 "XXXX",
                 "AAAA");
@@ -43,10 +54,10 @@ class DnaValidatorTests {
     @Test
     void dnaIsMutantInCol () {
         List<String> dna = List.of(
-                "AXXX",
-                "AXXX",
-                "AXXX",
-                "AXXX");
+                "AXXC",
+                "AXXC",
+                "AXXC",
+                "AXXC");
         Boolean actual = this.dnaValidator.validateDna(dna);
         assertTrue(actual);
     }
@@ -54,10 +65,11 @@ class DnaValidatorTests {
     @Test
     void dnaIsMutantInDiagonal () {
         List<String> dna = List.of(
-                "AXXX",
-                "XAXX",
-                "XXAX",
-                "XXXA");
+                "XXXAX",
+                "XXAAX",
+                "XAAXX",
+                "AAXXX",
+                "AXXXX");
         Boolean actual = this.dnaValidator.validateDna(dna);
         assertTrue(actual);
     }
@@ -65,11 +77,38 @@ class DnaValidatorTests {
     @Test
     void dnaIsMutantInInvDiagonal () {
         List<String> dna = List.of(
-                "XXXA",
-                "XXAX",
-                "XAXX",
-                "AXXX");
+                "CXXXX",
+                "CCXXX",
+                "XCCXX",
+                "XXCCX",
+                "XXXCX");
         Boolean actual = this.dnaValidator.validateDna(dna);
         assertTrue(actual);
+    }
+
+    @Test
+    void dnaIsMutantSameBaseRepeated () {
+        List<String> dna = List.of(
+                "AAAAAAAA",
+                "XXXXXXXX",
+                "XXXXXXXX",
+                "XXXXXXXX",
+                "XXXXXXXX",
+                "XXXXXXXX",
+                "XXXXXXXX",
+                "XXXXXXXX");
+        Boolean actual = this.dnaValidator.validateDna(dna);
+        assertTrue(actual);
+    }
+
+    @Test
+    void dnaIsNotMutantInOneLine () {
+        List<String> dna = List.of(
+                "XXAA",
+                "AAXX",
+                "XXAA",
+                "AAXX");
+        Boolean actual = this.dnaValidator.validateDna(dna);
+        assertFalse(actual);
     }
 }
